@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Counter View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PracticumCounter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CounterViewController" customModule="PracticumCounter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -114,13 +114,13 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="ChangesTextView" destination="Js6-Hz-H7t" id="KkM-LY-5UG"/>
-                        <outlet property="DigitView" destination="4dy-Kt-GWe" id="uSO-sh-2AS"/>
-                        <outlet property="InactiveButtonTapDetector" destination="i9q-ab-zud" id="Ghe-fR-Rr3"/>
-                        <outlet property="MaxCountWarning" destination="7Cm-r6-mLn" id="OMM-lF-s7r"/>
-                        <outlet property="MinusButton" destination="STv-E9-Ku6" id="zEe-8V-Egg"/>
-                        <outlet property="PlusButton" destination="DNe-p9-YOK" id="Nhx-oN-VSq"/>
-                        <outlet property="ResetButton" destination="WRF-8Y-cjK" id="xB1-lw-rso"/>
+                        <outlet property="changesTextView" destination="Js6-Hz-H7t" id="KkM-LY-5UG"/>
+                        <outlet property="digitView" destination="4dy-Kt-GWe" id="uSO-sh-2AS"/>
+                        <outlet property="inactiveButtonTapDetector" destination="i9q-ab-zud" id="Ghe-fR-Rr3"/>
+                        <outlet property="maxCountWarning" destination="7Cm-r6-mLn" id="OMM-lF-s7r"/>
+                        <outlet property="minusButton" destination="STv-E9-Ku6" id="zEe-8V-Egg"/>
+                        <outlet property="plusButton" destination="DNe-p9-YOK" id="Nhx-oN-VSq"/>
+                        <outlet property="resetButton" destination="WRF-8Y-cjK" id="xB1-lw-rso"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

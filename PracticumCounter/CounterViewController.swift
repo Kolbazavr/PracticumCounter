@@ -7,20 +7,20 @@
 
 import UIKit
 
-final class ViewController: UIViewController {
+final class CounterViewController: UIViewController {
     
-    @IBOutlet weak var PlusButton: UIButton!
-    @IBOutlet weak var MinusButton: UIButton!
-    @IBOutlet weak var ResetButton: UIButton!
-    @IBOutlet weak var DigitView: UILabel!
-    @IBOutlet weak var MaxCountWarning: UILabel!
-    @IBOutlet weak var ChangesTextView: UITextView!
-    @IBOutlet weak var InactiveButtonTapDetector: UIButton!
+    @IBOutlet weak private var plusButton: UIButton!
+    @IBOutlet weak private var minusButton: UIButton!
+    @IBOutlet weak private var resetButton: UIButton!
+    @IBOutlet weak private var digitView: UILabel!
+    @IBOutlet weak private var maxCountWarning: UILabel!
+    @IBOutlet weak private var changesTextView: UITextView!
+    @IBOutlet weak private var inactiveButtonTapDetector: UIButton!
     
     private let maxValue: Int = 99
     private let maxHistoryStrings: Int = 15
     
-    private enum CounerOperation {
+    private enum CounterOperation {
         case plus
         case minus
         case reset
@@ -29,7 +29,7 @@ final class ViewController: UIViewController {
     private var counterValue: Int = 0
     private var historyText: [String] = [] {
         didSet {
-            if historyText.count > maxHistoryStrings && historyText.count > 1 {
+            if historyText.count > maxHistoryStrings {
                 historyText.remove(at: 1)
             }
         }
@@ -37,21 +37,21 @@ final class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        PlusButton.isEnabled = true
+        plusButton.isEnabled = true
         historyText = ["Last \(maxHistoryStrings) changes history:"]
         updateUI()
     }
 
     private func updateUI() {
-        DigitView.text = String(counterValue)
-        PlusButton.isEnabled = counterValue < maxValue
-        MinusButton.isEnabled = counterValue > 0
-        ResetButton.isEnabled = counterValue != 0
-        MaxCountWarning.isHidden = counterValue < maxValue
-        ChangesTextView.text = historyText.joined(separator: "\n")
+        digitView.text = String(counterValue)
+        plusButton.isEnabled = counterValue < maxValue
+        minusButton.isEnabled = counterValue > 0
+        resetButton.isEnabled = counterValue != 0
+        maxCountWarning.isHidden = counterValue < maxValue
+        changesTextView.text = historyText.joined(separator: "\n")
     }
     
-    private func changeCounterValue(_ operation: CounerOperation) {
+    private func changeCounterValue(_ operation: CounterOperation) {
         switch operation {
         case .plus:
             counterValue = counterValue < maxValue ? counterValue + 1 : counterValue
@@ -62,7 +62,7 @@ final class ViewController: UIViewController {
         }
     }
     
-    private func updateHistoryTextView(_ operation: CounerOperation) {
+    private func updateHistoryTextView(_ operation: CounterOperation) {
         switch operation {
         case .reset:
             historyText.append("[\(Date().toString())] VALUE RESET")
@@ -71,26 +71,26 @@ final class ViewController: UIViewController {
         }
     }
 
-    @IBAction func resetIsPressed(_ sender: Any) {
+    @IBAction private func resetIsPressed(_ sender: Any) {
         changeCounterValue(.reset)
         updateHistoryTextView(.reset)
         updateUI()
     }
     
-    @IBAction func plusButtonIsPressed(_ sender: Any) {
+    @IBAction private func plusButtonIsPressed(_ sender: Any) {
         changeCounterValue(.plus)
         updateHistoryTextView(.plus)
         updateUI()
     }
     
-    @IBAction func minusButtonIsPressed(_ sender: Any) {
+    @IBAction private func minusButtonIsPressed(_ sender: Any) {
         changeCounterValue(.minus)
         updateHistoryTextView(.minus)
         updateUI()
     }
     
-    @IBAction func inactiveButtonTapped(_ sender: Any) {
-        historyText.append("...attemting to tap inactive minus button...")
+    @IBAction private func inactiveButtonTapped(_ sender: Any) {
+        historyText.append("..attempting to tap inactive minus button..")
         updateUI()
     }
     
